@@ -77,7 +77,7 @@ const handleLogicForGameOver = () => {
     clearInterval(timerScore);
     clearInterval(timerVerifyDead);
 
-    // Pause background music and play game over music
+    
     backgroundMusic.pause();
     gameOverMusic.play();
   }
