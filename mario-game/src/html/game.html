@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/%22%3E" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet" />
+    <title>Mario Jump</title>
+    <link rel="stylesheet" href="../styles/index.css" />
+  </head>
+
+  <body>
+    <div class="overlay">
+      <div class="overlay-content">
+        <div class="overlay-title">
+          <h1>Mario Jump</h1>
+          <span class="overlay-score">Seu score 0</span>
+        </div>
+
+        <div class="overlay-buttons">
+          <button class="reset">Reiniciar</button>
+          <a href="../../index.html">
+            <button class="reset">Voltar pro menu</button>
+          </a>
+        </div>
+
+        <footer class="overlay-footer">Mario Jump</footer>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2 class="score">SCORE 0</h2>
+      <span class="start-game"></span>
+      <img src="../assets/clouds.png" class="clouds" alt="pixel arte de nuvens" />
+      <img src="../assets/clouds.png" class="clouds-2" alt="pixel arte de nuvens" />
+      <img src="../assets/mario.gif" class="mario" alt="pixel arte do personagem mario caminhando" />
+      <img src="../assets/_12edcd15-6d30-4276-8bf1-9a1ba0a48ba9-removebg-preview.png" class="pipe" alt="pixel arte de um tubo de encanação verde" />
+    </div>
+
+    <audio id="background-music" loop autoplay>
+        <source src="/mario-game/src//audio/jogando.wav" type="audio/wav">
+        Seu navegador não suporta arquivos WAV.
+    </audio>
+
+    <audio id="game-over-music">
+        <source src="/mario-game/src/audio/Game_Over.wav" type="audio/wav">
+        Seu navegador não suporta arquivos WAV.
+    </audio>
+
+    <script src="../js/index.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <title>Mario Jump</title>
+    <link rel="stylesheet" href="./src/styles/index.css">
+</head>
+<body>
+    <div class="overlay-container">
+        <div class="overlay-content-start">
+            <div class="overlay-title">
+                <h1>Mario Jump</h1>
+            </div>
+
+            <div class="overlay-buttons">
+                <a href="./src/html/game.html"><button class="start">Start</button></a>
+            </div>
+
+            <footer class="overlay-footer">Mario Jump</footer>
+        </div>
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="src/audio/CV_Intro.wav" type="audio/wav">
+        Seu navegador não suporta arquivos WAV.
+    </audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const backgroundMusic = document.getElementById('background-music');
+            
+            // Play the background music only after user interaction
+            const playMusic = () => {
+                backgroundMusic.play().catch(error => {
+                    console.log('Playback prevented:', error);
+                });
+                document.removeEventListener('click', playMusic);
+                document.removeEventListener('keydown', playMusic);
+            };
+
+            document.addEventListener('click', playMusic);
+            document.addEventListener('keydown', playMusic);
+        });
+    </script>
+</body>
+</html>
