@@ -19,7 +19,7 @@ startGameInfo.innerHTML =
 
 reset.addEventListener('click', () => window.location.reload());
 
-window.addEventListener('keypress', () => {
+const startGameAndJump = () => {
   pipe.classList.add('pipeRun');
   mario.classList.add('jump');
 
@@ -40,8 +40,8 @@ window.addEventListener('keypress', () => {
         pipeSpeed = 0.6;
       }
       console.log({ pipeSpeed });
-      pipe.style.animationDelay = `pipe-animate ${pipeSpeed}s infinite linear`;
-    }, 1000 * 10);
+      pipe.style.animationDuration = `${pipeSpeed}s`;
+    }, 10000); // Corrigido para 10000ms (10 segundos)
   }
 
   startGame = false;
@@ -49,7 +49,15 @@ window.addEventListener('keypress', () => {
   timerVerifyDead = setInterval(() => {
     handleLogicForGameOver();
   }, 10);
+};
+
+window.addEventListener('keypress', startGameAndJump);
+window.addEventListener('keydown', (event) => {
+  if (event.key === 'ArrowUp') {
+    startGameAndJump();
+  }
 });
+window.addEventListener('touchstart', startGameAndJump);
 
 const handleLogicForGameOver = () => {
   const pipeLocalization = pipe.offsetLeft;
@@ -65,7 +73,7 @@ const handleLogicForGameOver = () => {
     pipe.style.animation = '';
     pipe.style.left = `${pipeLocalization}px`;
 
-    mario.src = '../assets/game-over.png';
+    mario.src = '/mario-game/src/assets/game-over-1.png';
     mario.style.marginLeft = '50px';
     mario.style.bottom = `-200px`;
     mario.style.width = '80px';
@@ -77,7 +85,6 @@ const handleLogicForGameOver = () => {
     clearInterval(timerScore);
     clearInterval(timerVerifyDead);
 
-    
     backgroundMusic.pause();
     gameOverMusic.play();
   }

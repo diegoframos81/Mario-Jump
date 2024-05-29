@@ -149,7 +149,7 @@ body {
   top: 10px;
   right: 10px;
   font-size: 1.5rem;
-  color: #598419;
+  color: #d80707;
 
   padding: 10px;
   background: #bdd8e3;
@@ -233,7 +233,9 @@ body {
 }
 
 .start {
-  
+  position: relative;
+  top: 23rem;
+  width: 125px;
   outline: none;
   background: #a40000df;
   border-radius: 10px;
