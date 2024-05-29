@@ -14,13 +14,15 @@ let timerVerifyDead;
 let timerScore;
 let timerSpeed;
 
-startGameInfo.innerHTML =
-  'Pressione qualquer tecla para iniciar <br/> O tempo é contabilizado a cada segundo';
+startGameInfo.innerHTML = 'Pressione qualquer tecla para iniciar <br/> O tempo é contabilizado a cada segundo';
 
 reset.addEventListener('click', () => window.location.reload());
 
 const startGameAndJump = () => {
-  pipe.classList.add('pipeRun');
+  if (!pipe.classList.contains('pipeRun')) {
+    pipe.classList.add('pipeRun');
+  }
+
   mario.classList.add('jump');
 
   setTimeout(() => mario.classList.remove('jump'), 500);
@@ -29,6 +31,7 @@ const startGameAndJump = () => {
     let pipeSpeed = 1.5;
     startGameInfo.innerHTML = '';
     startGameInfo.style.background = 'transparent';
+
     timerScore = setInterval(() => {
       countScore++;
       score.innerHTML = `SCORE ${countScore}`;
@@ -36,11 +39,14 @@ const startGameAndJump = () => {
 
     timerSpeed = setInterval(() => {
       pipeSpeed -= 0.1;
-      if (pipeSpeed <= 0) {
-        pipeSpeed = 0.6;
+      if (pipeSpeed < 0.6) {
+        pipeSpeed = 0.6; // Definir velocidade mínima do pipe
       }
       console.log({ pipeSpeed });
+
+      // Para alterar a duração da animação sem interrompê-la
       pipe.style.animationDuration = `${pipeSpeed}s`;
+
     }, 10000); // Corrigido para 10000ms (10 segundos)
   }
 
@@ -70,7 +76,7 @@ const handleLogicForGameOver = () => {
     pipeLocalization > 0 &&
     marioLocalization < 80
   ) {
-    pipe.style.animation = '';
+    pipe.classList.remove('pipeRun');
     pipe.style.left = `${pipeLocalization}px`;
 
     mario.src = '../assets/game-over-1.png';
@@ -84,6 +90,7 @@ const handleLogicForGameOver = () => {
 
     clearInterval(timerScore);
     clearInterval(timerVerifyDead);
+    clearInterval(timerSpeed);
 
     backgroundMusic.pause();
     gameOverMusic.play();
