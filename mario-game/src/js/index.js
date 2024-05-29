@@ -70,7 +70,7 @@ const handleLogicForGameOver = () => {
     pipeLocalization > 0 &&
     marioLocalization < 80
   ) {
-    pipe.style.animation = '/mario-game/src/assets/_12edcd15-6d30-4276-8bf1-9a1ba0a48ba9-removebg-preview.png';
+    pipe.style.animation = '';
     pipe.style.left = `${pipeLocalization}px`;
 
     mario.src = '/mario-game/src/assets/game-over-1.png';
