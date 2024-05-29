@@ -8,7 +8,7 @@
 body {
   background: rgb(81, 81, 81);
   position: relative;
-  background: url('../assets/cenario-gif.gif');
+  background: url('../assets/fundo-gif.gif');
   background-repeat: no-repeat;
   background-size: cover;
 }
